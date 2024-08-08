@@ -4,6 +4,7 @@ import PostOwner from "../components/PostOwnner";
 import Comment from "../components/Comment";
 import {comments} from "../libs/comments";
 import Reply from "../components/Reply";
+import { nanoid } from 'nanoid';
 
 export default function Home() {
   return (
@@ -29,22 +30,14 @@ export default function Home() {
 
         {comments.map((data : any) => 
         <Comment
-        userImagePath={data.img}
+        key={nanoid()}
+        userImagePath={data.userImagePath}
         username={data.username}
         commentText={data.commentText}
         likeNum={data.likeNum}
-        replies={data.replies}
+        replies={data.replies.length > 0 ? data.replies : []}
         />
         )}
-
-        {/* Reply Example */}
-      
-        <Reply
-        userImagePath={"/profileImages/puppy.jpg"}
-        username={"หมาน้อย"}
-        replyText={"จริงค้าบบบบบบบบ"}
-        likeNum={2}
-        />
 
         {/* map-loop render Comment component here */}
       </div>

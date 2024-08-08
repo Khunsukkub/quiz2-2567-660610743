@@ -22,8 +22,12 @@ export default function Reply({ userImagePath, username, replyText, likeNum } : 
             <br />
             <span style={{ color: "#E4E6EB" }}>{replyText}</span>
             <div className="d-flex align-items-center gap-1">
-              <img src="/like.svg" width={20}></img>
+            {likeNum > 0 ? (
+              <>
+              <img src="/like.svg" width={20} alt="like icon" />
               <span style={{ color: "#B0B3B8" }}>{likeNum} คน</span>
+              </>
+            ) : null}
             </div>
           </div>
         </div>
